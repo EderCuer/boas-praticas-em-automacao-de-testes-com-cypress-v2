@@ -1,6 +1,10 @@
-import { faker } from '@faker-js/faker'
+/*
+Abra o arquivo cypress/e2e/page-object/sample.cy.js e em vez de utilizar o método .updateInfo() 
+do módulo editDestinationPage (ou seja, do Page Object), 
+crie um comando customizado chamado updateDestination, o qual pode ser utilizado em vez do método do Page Object.
+*/
 
-const editDestinationPage = require('../../page-objects/editDestination')
+import { faker } from '@faker-js/faker'
 
 describe('Page Object bad practice', () => {
   const randomDestination = Math.floor(Math.random() * 15) + 1
@@ -15,7 +19,7 @@ describe('Page Object bad practice', () => {
       description: faker.random.words(5)
     }
 
-    editDestinationPage.updateInfo(info)
+    cy.updateDestination(info)
 
     cy.url()
       .should(
